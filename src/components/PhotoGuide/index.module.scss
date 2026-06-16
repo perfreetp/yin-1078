@@ -12,7 +12,7 @@
   margin: 0 $spacing-sm $spacing-md;
   background: $color-bg-card;
   border-radius: $radius-md;
-  padding: $spacing-lg $spacing-sm;
+  padding: $spacing-md $spacing-sm;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +20,7 @@
   border: 2rpx solid transparent;
   transition: all $transition-base;
   position: relative;
+  overflow: hidden;
 
   &:active {
     transform: scale(0.97);
@@ -42,19 +43,22 @@
   margin-bottom: $spacing-sm;
 }
 
-.iconWrapSelected {
-  background: rgba($color-primary, 0.12);
+.cameraIcon {
+  font-size: 36rpx;
 }
 
-.angleEmoji {
-  font-size: 40rpx;
+.photoPreview {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: $radius-sm;
+  margin-bottom: $spacing-sm;
 }
 
 .angleName {
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   color: $color-text-primary;
-  margin-bottom: $spacing-xs;
+  margin-bottom: 4rpx;
   text-align: center;
 }
 

@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { View, Text } from '@tarojs/components';
 import classnames from 'classnames';
-import { mockAppointments, mockCalendarEvents, mockDoctorInstructions } from '@/data/appointments';
+import { mockAppointments, mockCalendarEvents } from '@/data/appointments';
+import { useAppStore } from '@/store/useAppStore';
 import styles from './index.module.scss';
 
 const AppointmentPage: React.FC = () => {
@@ -9,7 +10,7 @@ const AppointmentPage: React.FC = () => {
     const now = new Date();
     return { year: now.getFullYear(), month: now.getMonth() };
   });
-  const [instructions, setInstructions] = useState(mockDoctorInstructions);
+  const { doctorInstructions, toggleDoctorInstruction } = useAppStore();
 
   const calendarDays = useMemo(() => {
     const { year, month } = currentMonth;
@@ -55,9 +56,7 @@ const AppointmentPage: React.FC = () => {
   };
 
   const toggleInstruction = (id: string) => {
-    setInstructions((prev) =>
-      prev.map((d) => (d.id === id ? { ...d, checked: !d.checked } : d))
-    );
+    toggleDoctorInstruction(id);
   };
 
   const typeConfig = {
@@ -152,7 +151,7 @@ const AppointmentPage: React.FC = () => {
             <Text className={styles.sectionEmoji}>💊</Text>医嘱清单
           </Text>
         </View>
-        {instructions.map((ins) => (
+        {doctorInstructions.map((ins) => (
           <View
             key={ins.id}
             className={styles.instructionItem}

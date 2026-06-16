@@ -76,6 +76,16 @@
   }
 }
 
+.submitBtnDisabled {
+  background: $color-text-disabled;
+  opacity: 0.7;
+
+  &:active {
+    transform: none;
+    opacity: 0.7;
+  }
+}
+
 .submitBtnText {
   font-size: $font-size-lg;
   font-weight: $font-weight-medium;
@@ -126,6 +136,11 @@
   color: $color-tag-visit;
 }
 
+.resultPending {
+  background: rgba($color-text-tertiary, 0.15);
+  color: $color-text-secondary;
+}
+
 .resultLabel {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
@@ -138,6 +153,35 @@
   font-size: $font-size-sm;
   color: $color-text-secondary;
   line-height: $line-height-loose;
+}
+
+.resultReplyTime {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+  display: block;
+}
+
+.feedbackBtn {
+  height: $button-height-sm;
+  background: rgba($color-primary, 0.08);
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: $spacing-md;
+  transition: all $transition-base;
+
+  &:active {
+    background: rgba($color-primary, 0.12);
+    transform: scale(0.98);
+  }
+}
+
+.feedbackBtnText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-primary;
 }
 
 .tipCard {

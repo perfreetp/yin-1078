@@ -207,6 +207,20 @@
   color: $color-primary;
   min-width: 80rpx;
   margin-right: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.noteAuthorParent {
+  color: $color-accent-dark;
+}
+
+.noteAuthorChild {
+  color: $color-primary;
+}
+
+.noteBody {
+  flex: 1;
+  min-width: 0;
 }
 
 .noteContent {
@@ -219,8 +233,19 @@
 .noteTime {
   font-size: $font-size-xs;
   color: $color-text-tertiary;
-  margin-left: $spacing-sm;
-  white-space: nowrap;
+  margin-top: 4rpx;
+  display: block;
+}
+
+.emptyNotes,
+.emptyEmergency {
+  padding: $spacing-lg 0;
+  text-align: center;
+}
+
+.emptyText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
 }
 
 .weekChart {
@@ -304,7 +329,20 @@
   display: block;
 }
 
+.emergencyStatus {
+  font-size: $font-size-xs;
+  color: $color-tag-visit;
+  font-weight: $font-weight-normal;
+  margin-left: 4rpx;
+}
+
 .emergencyDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-bottom: 2rpx;
+}
+
+.emergencyTime {
   font-size: $font-size-xs;
   color: $color-text-tertiary;
 }

@@ -1,34 +1,42 @@
 import React from 'react';
-import { View, Text } from '@tarojs/components';
+import { View, Text, Image } from '@tarojs/components';
 import classnames from 'classnames';
 import type { PhotoAngle } from '@/types';
 import styles from './index.module.scss';
 
 interface PhotoGuideProps {
   angles: PhotoAngle[];
-  selectedIds: string[];
-  onToggle: (id: string) => void;
+  photos: Record<string, string>;
+  onTakePhoto: (id: string) => void;
 }
 
-const PhotoGuide: React.FC<PhotoGuideProps> = ({ angles, selectedIds, onToggle }) => {
+const PhotoGuide: React.FC<PhotoGuideProps> = ({ angles, photos, onTakePhoto }) => {
   return (
     <View className={styles.grid}>
       {angles.map((angle) => {
-        const isSelected = selectedIds.includes(angle.id);
+        const hasPhoto = !!photos[angle.id];
         return (
           <View
             key={angle.id}
-            className={classnames(styles.angleCard, isSelected && styles.angleSelected)}
-            onClick={() => onToggle(angle.id)}
+            className={classnames(styles.angleCard, hasPhoto && styles.angleSelected)}
+            onClick={() => onTakePhoto(angle.id)}
           >
-            <View className={classnames(styles.iconWrap, isSelected && styles.iconWrapSelected)}>
-              <Text className={styles.angleEmoji}>{angle.emoji}</Text>
-            </View>
-            <Text className={classnames(styles.angleName, isSelected && styles.angleNameSelected)}>
+            {hasPhoto ? (
+              <Image
+                className={styles.photoPreview}
+                src={photos[angle.id]}
+                mode="aspectFill"
+              />
+            ) : (
+              <View className={styles.iconWrap}>
+                <Text className={styles.cameraIcon}>📷</Text>
+              </View>
+            )}
+            <Text className={classnames(styles.angleName, hasPhoto && styles.angleNameSelected)}>
               {angle.name}
             </Text>
             <Text className={styles.angleInstruction}>{angle.instruction}</Text>
-            {isSelected && <View className={styles.doneBadge}>已拍</View>}
+            {hasPhoto && <View className={styles.doneBadge}>已拍</View>}
           </View>
         );
       })}

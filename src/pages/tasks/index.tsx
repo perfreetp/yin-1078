@@ -1,23 +1,29 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { View, Text } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import classnames from 'classnames';
+import { useDidShow } from '@tarojs/taro';
 import TaskCard from '@/components/TaskCard';
-import { mockTasks, mockReminders, mockModes } from '@/data/tasks';
+import { mockReminders, mockModes } from '@/data/tasks';
+import { useAppStore } from '@/store/useAppStore';
+import type { EmergencyType, AppModeType } from '@/types';
 import styles from './index.module.scss';
 
 const TasksPage: React.FC = () => {
-  const [tasks, setTasks] = useState(mockTasks);
-  const [currentMode, setCurrentMode] = useState<'normal' | 'exam' | 'boarding'>('normal');
+  const { tasks, mode, toggleTask, addEmergency, setMode } = useAppStore();
+
+  useDidShow(() => {
+    console.info('[Tasks] Page shown, tasks count:', tasks.length);
+  });
 
   const completedCount = useMemo(() => tasks.filter((t) => t.completed).length, [tasks]);
   const totalCount = tasks.length;
 
   const handleToggleTask = (id: string) => {
-    setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)));
+    toggleTask(id);
   };
 
-  const handleEmergency = (type: string, title: string) => {
+  const handleEmergency = (type: EmergencyType, title: string) => {
     Taro.showModal({
       title: `${title}`,
       content: `请描述${title}的具体情况`,
@@ -25,15 +31,15 @@ const TasksPage: React.FC = () => {
       placeholderText: '例如：左上2号牙...',
       success: (res) => {
         if (res.confirm && res.content) {
-          console.info('[Tasks] Emergency reported:', type, res.content);
-          Taro.showToast({ title: '已记录，医生会尽快查看', icon: 'none' });
+          addEmergency(type, res.content);
+          Taro.showToast({ title: '已记录，医生会尽快查看', icon: 'success' });
         }
       },
     });
   };
 
-  const handleModeChange = (type: 'normal' | 'exam' | 'boarding') => {
-    setCurrentMode(type);
+  const handleModeChange = (type: AppModeType) => {
+    setMode(type);
     const modeInfo = mockModes.find((m) => m.type === type);
     Taro.showToast({ title: `已切换为${modeInfo?.label}`, icon: 'none' });
   };
@@ -52,8 +58,8 @@ const TasksPage: React.FC = () => {
             {dateStr} {dayStr}
           </Text>
           <View className={styles.modeTag}>
-            <Text className={styles.modeEmoji}>{mockModes.find((m) => m.type === currentMode)?.emoji}</Text>
-            <Text className={styles.modeLabel}>{mockModes.find((m) => m.type === currentMode)?.label}</Text>
+            <Text className={styles.modeEmoji}>{mode.emoji}</Text>
+            <Text className={styles.modeLabel}>{mode.label}</Text>
           </View>
         </View>
       </View>
@@ -99,20 +105,20 @@ const TasksPage: React.FC = () => {
           </Text>
         </View>
         <View className={styles.modeGrid}>
-          {mockModes.map((mode) => (
+          {mockModes.map((m) => (
             <View
-              key={mode.type}
-              className={classnames(styles.modeCard, currentMode === mode.type && styles.modeCardActive)}
-              onClick={() => handleModeChange(mode.type as 'normal' | 'exam' | 'boarding')}
+              key={m.type}
+              className={classnames(styles.modeCard, mode.type === m.type && styles.modeCardActive)}
+              onClick={() => handleModeChange(m.type as AppModeType)}
             >
-              <Text className={styles.modeCardEmoji}>{mode.emoji}</Text>
+              <Text className={styles.modeCardEmoji}>{m.emoji}</Text>
               <Text
                 className={classnames(
                   styles.modeCardLabel,
-                  currentMode === mode.type && styles.modeCardLabelActive
+                  mode.type === m.type && styles.modeCardLabelActive
                 )}
               >
-                {mode.label}
+                {m.label}
               </Text>
             </View>
           ))}

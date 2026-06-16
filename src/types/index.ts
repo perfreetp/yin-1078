@@ -1,3 +1,5 @@
+export type TaskCategory = 'wear' | 'clean' | 'rubber' | 'other';
+
 export interface TaskItem {
   id: string;
   title: string;
@@ -5,15 +7,19 @@ export interface TaskItem {
   time: string;
   description: string;
   completed: boolean;
-  category: 'wear' | 'clean' | 'rubber' | 'other';
+  completedAt?: string;
+  category: TaskCategory;
 }
+
+export type EmergencyType = 'bracket' | 'wire' | 'other';
+export type EmergencyStatus = 'pending' | 'handled';
 
 export interface EmergencyReport {
   id: string;
-  type: 'bracket' | 'wire' | 'other';
+  type: EmergencyType;
   description: string;
   reportedAt: string;
-  status: 'pending' | 'handled';
+  status: EmergencyStatus;
 }
 
 export interface PhotoAngle {
@@ -24,12 +30,16 @@ export interface PhotoAngle {
   placeholder: string;
 }
 
+export type PhotoResult = 'pending' | 'normal' | 'observe' | 'visit';
+
 export interface PhotoSubmission {
   id: string;
   submittedAt: string;
   angles: string[];
-  result: 'normal' | 'observe' | 'visit';
+  photos: Record<string, string>;
+  result: PhotoResult;
   doctorNote: string;
+  doctorRepliedAt?: string;
 }
 
 export interface ReminderSlot {
@@ -40,11 +50,15 @@ export interface ReminderSlot {
   enabled: boolean;
 }
 
+export type AppModeType = 'normal' | 'exam' | 'boarding';
+
 export interface AppMode {
-  type: 'normal' | 'exam' | 'boarding';
+  type: AppModeType;
   label: string;
   emoji: string;
 }
+
+export type AppointmentType = 'checkup' | 'adjust' | 'phase_change';
 
 export interface AppointmentItem {
   id: string;
@@ -53,7 +67,7 @@ export interface AppointmentItem {
   doctor: string;
   hospital: string;
   note: string;
-  type: 'checkup' | 'adjust' | 'phase_change';
+  type: AppointmentType;
 }
 
 export interface CalendarEvent {
@@ -82,10 +96,12 @@ export interface FaqItem {
   category: string;
 }
 
+export type NoteAuthor = 'parent' | 'child';
+
 export interface FamilyNote {
   id: string;
-  taskId: string;
   content: string;
   createdAt: string;
-  author: 'parent' | 'child';
+  author: NoteAuthor;
+  taskId?: string;
 }
