@@ -1,0 +1,83 @@
+@use '@/styles/variables.scss' as *;
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 (-$spacing-sm);
+}
+
+.angleCard {
+  width: calc(33.333% - #{$spacing-md});
+  margin: 0 $spacing-sm $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-lg $spacing-sm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: $shadow-card;
+  border: 2rpx solid transparent;
+  transition: all $transition-base;
+  position: relative;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.angleSelected {
+  border-color: $color-primary;
+  background: rgba($color-primary, 0.04);
+}
+
+.iconWrap {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-round;
+  background: $color-bg-hover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-sm;
+}
+
+.iconWrapSelected {
+  background: rgba($color-primary, 0.12);
+}
+
+.angleEmoji {
+  font-size: 40rpx;
+}
+
+.angleName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+  text-align: center;
+}
+
+.angleNameSelected {
+  color: $color-primary;
+}
+
+.angleInstruction {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-align: center;
+  line-height: $line-height-normal;
+  @include text-ellipsis-multi(2);
+}
+
+.doneBadge {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  background: $color-success;
+  color: $color-text-white;
+  font-size: 18rpx;
+  padding: 2rpx 12rpx;
+  border-radius: $radius-round;
+  white-space: nowrap;
+}

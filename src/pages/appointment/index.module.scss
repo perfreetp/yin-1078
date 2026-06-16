@@ -1,0 +1,307 @@
+@use '@/styles/variables.scss' as *;
+
+.container {
+  min-height: 100vh;
+  padding: 0 $page-padding;
+  padding-bottom: 120rpx;
+  background: linear-gradient(180deg, rgba($color-success, 0.06) 0%, $color-bg-page 400rpx);
+}
+
+.header {
+  padding-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.headerTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.headerDesc {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.section {
+  margin-bottom: $spacing-lg;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sectionEmoji {
+  font-size: $font-size-lg;
+  margin-right: $spacing-sm;
+}
+
+.calendar {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-lg;
+}
+
+.calendarHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.calendarNavBtn {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: $radius-round;
+  background: $color-bg-hover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-border;
+  }
+}
+
+.calendarNavText {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.calendarMonth {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.calendarWeekRow {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: $spacing-xs;
+}
+
+.calendarWeekLabel {
+  flex: 1;
+  text-align: center;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  padding: $spacing-xs 0;
+}
+
+.calendarRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.calendarDay {
+  flex: 1;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: $radius-sm;
+  transition: all $transition-fast;
+}
+
+.calendarDayNum {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+}
+
+.calendarDayEmpty {
+  flex: 1;
+  aspect-ratio: 1;
+}
+
+.calendarDayToday {
+  background: rgba($color-primary, 0.1);
+  border-radius: $radius-sm;
+}
+
+.calendarDayToday .calendarDayNum {
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.calendarDot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: $radius-round;
+  margin-top: 4rpx;
+  position: absolute;
+  bottom: 6rpx;
+}
+
+.dotAppointment {
+  background: $color-primary;
+}
+
+.dotPhase {
+  background: $color-accent;
+}
+
+.dotEmergency {
+  background: $color-error;
+}
+
+.appointmentCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+  border-left: 6rpx solid $color-primary;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.99);
+  }
+}
+
+.appointmentCardPhase {
+  border-left-color: $color-accent;
+}
+
+.appointmentCardAdjust {
+  border-left-color: $color-info;
+}
+
+.appointmentDate {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: $spacing-sm;
+}
+
+.appointmentDateText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-right: $spacing-sm;
+}
+
+.appointmentTime {
+  font-size: $font-size-sm;
+  color: $color-primary;
+}
+
+.appointmentType {
+  font-size: $font-size-xs;
+  padding: 2rpx 14rpx;
+  border-radius: $radius-round;
+  white-space: nowrap;
+  margin-left: $spacing-sm;
+}
+
+.typeCheckup {
+  background: rgba($color-primary, 0.1);
+  color: $color-primary;
+}
+
+.typePhaseChange {
+  background: rgba($color-accent, 0.1);
+  color: $color-accent-dark;
+}
+
+.typeAdjust {
+  background: rgba($color-info, 0.1);
+  color: $color-info;
+}
+
+.appointmentDoctor {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.appointmentNote {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+.instructionItem {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-sm;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.instructionCheck {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: $radius-round;
+  border: 2rpx solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: $spacing-md;
+  margin-top: 2rpx;
+  flex-shrink: 0;
+  transition: all $transition-base;
+}
+
+.instructionChecked {
+  background: $color-success;
+  border-color: $color-success;
+}
+
+.instructionCheckMark {
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+}
+
+.instructionContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.instructionText {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+.instructionTextDone {
+  text-decoration: line-through;
+  color: $color-text-tertiary;
+}
+
+.instructionDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: 4rpx;
+  display: block;
+}

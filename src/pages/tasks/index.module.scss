@@ -1,0 +1,226 @@
+@use '@/styles/variables.scss' as *;
+
+.container {
+  min-height: 100vh;
+  padding: 0 $page-padding;
+  padding-bottom: 120rpx;
+  background: linear-gradient(180deg, rgba($color-primary, 0.06) 0%, $color-bg-page 400rpx);
+}
+
+.header {
+  padding-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.greeting {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.dateRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dateText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.modeTag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba($color-accent, 0.12);
+  border-radius: $radius-round;
+  padding: 6rpx 20rpx;
+}
+
+.modeEmoji {
+  font-size: $font-size-sm;
+  margin-right: 6rpx;
+}
+
+.modeLabel {
+  font-size: $font-size-xs;
+  color: $color-accent-dark;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.section {
+  margin-bottom: $spacing-lg;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sectionEmoji {
+  font-size: $font-size-lg;
+  margin-right: $spacing-sm;
+}
+
+.progressText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.emergencyGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 (-$spacing-sm);
+}
+
+.emergencyCard {
+  width: calc(50% - #{$spacing-md});
+  margin: 0 $spacing-sm $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+}
+
+.emergencyEmoji {
+  font-size: 48rpx;
+  margin-bottom: $spacing-sm;
+}
+
+.emergencyTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin-bottom: 4rpx;
+}
+
+.emergencyDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-align: center;
+}
+
+.reminderList {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.reminderItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: $spacing-sm 0;
+
+  &:not(:last-child) {
+    border-bottom: 1rpx solid $color-divider;
+  }
+}
+
+.reminderEmoji {
+  font-size: $font-size-md;
+  margin-right: $spacing-sm;
+}
+
+.reminderTime {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin-right: $spacing-md;
+  min-width: 100rpx;
+}
+
+.reminderLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  flex: 1;
+}
+
+.reminderDot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: $radius-round;
+  background: $color-success;
+  margin-left: $spacing-sm;
+}
+
+.reminderDotOff {
+  background: $color-text-disabled;
+}
+
+.modeSection {
+  margin-bottom: $spacing-lg;
+}
+
+.modeGrid {
+  display: flex;
+  flex-direction: row;
+  margin: 0 (-$spacing-sm);
+}
+
+.modeCard {
+  flex: 1;
+  margin: 0 $spacing-sm;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: $shadow-card;
+  border: 2rpx solid transparent;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.modeCardActive {
+  border-color: $color-primary;
+  background: rgba($color-primary, 0.04);
+}
+
+.modeCardEmoji {
+  font-size: 40rpx;
+  margin-bottom: $spacing-xs;
+}
+
+.modeCardLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.modeCardLabelActive {
+  color: $color-primary;
+}

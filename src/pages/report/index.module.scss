@@ -1,0 +1,234 @@
+@use '@/styles/variables.scss' as *;
+
+.container {
+  min-height: 100vh;
+  padding: 0 $page-padding;
+  padding-bottom: 120rpx;
+  background: linear-gradient(180deg, rgba($color-primary, 0.06) 0%, $color-bg-page 400rpx);
+}
+
+.header {
+  padding-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.headerTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.headerDesc {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.scoreHero {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-xl;
+  padding: $spacing-xl $spacing-lg;
+  margin-bottom: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4rpx 20rpx rgba($color-primary, 0.25);
+}
+
+.scoreEmoji {
+  font-size: 56rpx;
+  margin-bottom: $spacing-sm;
+}
+
+.scoreNumber {
+  font-size: 80rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  display: block;
+}
+
+.scoreUnit {
+  font-size: $font-size-md;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 8rpx;
+}
+
+.scoreLabel {
+  font-size: $font-size-md;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: $spacing-xs;
+}
+
+.scoreRow {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.section {
+  margin-bottom: $spacing-lg;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sectionEmoji {
+  font-size: $font-size-lg;
+  margin-right: $spacing-sm;
+}
+
+.trendChart {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.trendRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 240rpx;
+  margin-top: $spacing-md;
+}
+
+.trendBarItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.trendBar {
+  width: 56rpx;
+  border-radius: 28rpx 28rpx 4rpx 4rpx;
+  transition: all $transition-base;
+  position: relative;
+}
+
+.trendScore {
+  position: absolute;
+  top: -32rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+  white-space: nowrap;
+}
+
+.trendLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+}
+
+.faqCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.faqQuestion {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.faqIcon {
+  font-size: $font-size-md;
+  margin-right: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.faqQ {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  flex: 1;
+}
+
+.faqTag {
+  font-size: $font-size-xs;
+  color: $color-primary;
+  background: rgba($color-primary, 0.08);
+  padding: 2rpx 12rpx;
+  border-radius: $radius-round;
+  white-space: nowrap;
+  margin-left: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.faqAnswer {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-loose;
+  margin-top: $spacing-sm;
+  margin-left: 44rpx;
+}
+
+.instructionRecap {
+  background: rgba($color-success, 0.06);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.recapItem {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: $spacing-sm 0;
+
+  &:not(:last-child) {
+    border-bottom: 1rpx solid $color-divider;
+  }
+}
+
+.recapDot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: $radius-round;
+  background: $color-success;
+  margin-right: $spacing-sm;
+  margin-top: 10rpx;
+  flex-shrink: 0;
+}
+
+.recapText {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  flex: 1;
+}
+
+.recapDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-left: $spacing-sm;
+  white-space: nowrap;
+}

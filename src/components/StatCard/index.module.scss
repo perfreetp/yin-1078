@@ -1,0 +1,43 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-lg $spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: $shadow-card;
+  min-width: 140rpx;
+  flex: 1;
+}
+
+.emoji {
+  font-size: 36rpx;
+  margin-bottom: $spacing-xs;
+}
+
+.valueRow {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: $spacing-xs;
+}
+
+.value {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+}
+
+.unit {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-left: 4rpx;
+}
+
+.label {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  text-align: center;
+}
